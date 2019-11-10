@@ -31,11 +31,10 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('userType', user.UserType);
       this.loginService.authenticate(user).subscribe( (data) => {
         /*Receives success message if user exists and with correct credentails*/
-        // @ts-ignore
         const mymessage = 'Success';
         console.log("Response data",data);
-        if (mymessage === 'Success') {
-          this.router.navigate(['/addorganization']);
+        if (data["message"] === 'Success') {
+          this.router.navigateByUrl('/addorganization');
         } else {
           // @ts-ignore
           console.log(data.message);
@@ -51,12 +50,11 @@ export class LoginComponent implements OnInit {
         /*Receives success message if user exists and with correct credentails*/
         // @ts-ignore
         const mymessage = 'Success';
-        console.log("Response data",data);
-        if (mymessage === 'Success') {
-          this.router.navigate(['/adddrivercomponent']);
+        console.log("Response data",data["oid"]);
+        if (data["message"] === 'Success') {
+          this.router.navigateByUrl('/adddrivercomponent/'+data["oid"]);
         } else {
-          // @ts-ignore
-          console.log(data.message);
+          console.log(data["message"]);
           this.InvalidUser = true;
         }
 
