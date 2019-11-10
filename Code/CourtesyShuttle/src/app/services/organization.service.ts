@@ -21,6 +21,16 @@ export class OrganizationService {
     console.log('In the service call', accounts);
     return this.http.post(`${this.uri}` + '/AddOrganizationAdmin', accounts);
   }
+
+  createDriver(accounts) {
+    console.log('In the service call', accounts);
+    return this.http.post(`${this.uri}` + '/createDriver', accounts);
+  }
+
+  AddShuttle(accounts) {
+    console.log('In the service call', accounts);
+    return this.http.post(`${this.uri}` + '/AddShuttle', accounts);
+  }
   getAllAccounts(){
     console.log('in service page');
     return this.http.get(`${this.uri}/getallAccounts`, httpOptions);
@@ -29,5 +39,13 @@ export class OrganizationService {
     console.log('in service page');
     return this.http.get(`${this.uri}/getallAdminUsers`, httpOptions);
   }
+  getAllShuttles(){
+    console.log('in service page');
+    return this.http.get(`${this.uri}/getAllShuttles`, httpOptions);
+  }
 
+  getAllDrivers(){
+    console.log('in service page');
+    return this.http.get(`${this.uri}/getAllDrivers`, httpOptions);
+  }
 }

@@ -12,7 +12,7 @@ export class NavbarComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    const Usertype = localStorage.getItem('Usertype');
+    const Usertype = localStorage.getItem('userType');
     console.log("User Type",Usertype);
     if (Usertype === 'SuperAdmin') {
       console.log(Usertype);
@@ -21,6 +21,14 @@ export class NavbarComponent implements OnInit {
         AddOrganizationAdmin: 'Add Organization Admin',
       }
 
+    }
+    else if(Usertype === 'OrganizationAdmin'){
+      console.log("User Type inside navbar",Usertype);
+      this.AccountAdmin = {
+        AddDriver : 'Add Driver',
+        Dashboard : 'Dashboard',
+        AddShuttles: 'Add Shuttles'
+      }
     }
   }
 

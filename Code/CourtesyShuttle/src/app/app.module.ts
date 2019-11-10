@@ -14,6 +14,8 @@ import { LoginComponent } from './login/login.component';
 import { AddOrganizationComponent } from './SuperAdmin/add-organization/add-organization.component';
 import { NavbarComponent } from './navbar/navbar/navbar.component';
 import { AddOrganizationAdminComponent } from './SuperAdmin/add-organization-admin/add-organization-admin.component';
+import { AddDriverComponent } from './OrgAdmin/add-driver/add-driver.component';
+import { AddshuttleComponent } from './OrgAdmin/addshuttle/addshuttle.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { AddOrganizationAdminComponent } from './SuperAdmin/add-organization-adm
     AddOrganizationComponent,
     NavbarComponent,
     AddOrganizationAdminComponent,
+    AddDriverComponent,
+    AddshuttleComponent,
   ],
   imports: [
     BrowserModule,

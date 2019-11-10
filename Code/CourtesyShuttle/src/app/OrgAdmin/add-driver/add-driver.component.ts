@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {OrganizationService} from '../../services/organization.service';
+
 @Component({
-  selector: 'app-add-organization-admin',
-  templateUrl: './add-organization-admin.component.html',
-  styleUrls: ['./add-organization-admin.component.css']
+  selector: 'app-add-driver',
+  templateUrl: './add-driver.component.html',
+  styleUrls: ['./add-driver.component.css']
 })
-export class AddOrganizationAdminComponent implements OnInit {
+export class AddDriverComponent implements OnInit {
 
   Firstname = '';
   Lastname = '';
@@ -14,36 +15,40 @@ export class AddOrganizationAdminComponent implements OnInit {
   EmailID = '';
   Password = '';
   OrganizationName = '';
+  currLat = '';
+  currLon = '';
 
-  private OrgDetails;
+  private driverDetails;
   InvalidUser = false;
   constructor(private AccountService: OrganizationService) { }
 
   ngOnInit() {
-    this.AccountService.getallAdminUsers().subscribe(res => {
+    this.AccountService.getAllDrivers().subscribe(res => {
       console.log('return call from db', res);
-      this.OrgDetails = res;
+      this.driverDetails = res;
     });
   }
-  addOrganizationAdmin() {
+  addDriver() {
     const accounts = {
       Firstname: this.Firstname,
       Lastname: this.Lastname,
       EmailID: this.EmailID,
       Password: this.Password,
-      Usertype: 'OrganizationAdmin',
-      OrganizationName: ''
+      Usertype: 'Driver',
+      OrganizationName: '',
+      currLat: this.currLat,
+      currLon: this.currLon
     };
     /*Checking if users exists in DB by calling LoginServices*/
     console.log('before service call: ', accounts);
-    this.AccountService.createAdminAccount(accounts).subscribe( (data) => {
-      console.log("Admin Details:",accounts);
+    this.AccountService.createDriver(accounts).subscribe( (data) => {
+      console.log("Driver Details:",accounts);
       // @ts-ignore
       if (data.message === 'success') {
         console.log(data);
-        this.AccountService.getallAdminUsers().subscribe(res => {
+        this.AccountService.getAllDrivers().subscribe(res => {
           console.log('return call from db', res);
-          this.OrgDetails = res;
+          this.driverDetails = res;
         });
       } else {
         // @ts-ignore
