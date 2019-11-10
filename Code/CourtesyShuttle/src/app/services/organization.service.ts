@@ -48,4 +48,10 @@ export class OrganizationService {
     console.log('in service page');
     return this.http.get(`${this.uri}/getAllDrivers`, httpOptions);
   }
+
+  getallorg(){
+    console.log('in org page');
+    return this.http.get(`${this.uri}/getOrgNames`,httpOptions);
+  }
+
 }
