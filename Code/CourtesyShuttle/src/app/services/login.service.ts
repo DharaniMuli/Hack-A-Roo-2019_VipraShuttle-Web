@@ -8,10 +8,11 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class LoginService {
-  uri = 'http://localhost:3000/user';
+  uri = 'http://localhost:3000/signup/signinDetails';
   constructor(private http: HttpClient) { }
 
   authenticate(user) {
+    console.log('Inside Service call', user);
     return this.http.post(`${this.uri}`, user);
   }
 

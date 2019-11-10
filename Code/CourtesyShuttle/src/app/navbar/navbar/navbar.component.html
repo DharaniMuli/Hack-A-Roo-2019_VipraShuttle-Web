@@ -5,12 +5,12 @@
   </button>
   <div class="navbar-collapse container" id="navbarToggler">
     <div class="navbar-nav">
-      <a class="navbar-brand heading" href="/addorganization" style="color: #009688;">Courtesy Shuttle</a>
+      <a class="navbar-brand heading" href="/addorganization" style="color: #009688;"><h2>Courtesy Shuttle Application</h2></a>
     </div>
 
     <ul class="nav navbar-nav mr-auto mt-2 mt-lg-0" routerLinkActive="active" *ngIf="AccountAdmin">
-      <li class="nav-item"><a class="nav-link" routerLink="/dashboard">{{AccountAdmin.dashboard}}</a></li>
-      
+      <li class="nav-item"><a class="nav-link" routerLink="/addorganization">{{AccountAdmin.AddOrganization}}</a></li>
+      <li class="nav-item"><a class="nav-link" routerLink="/addorganizationadmincomponent">{{AccountAdmin.AddOrganizationAdmin}}</a></li>
     </ul>
     <ul class="nav navbar-nav" routerLinkActive="active">
       <li class="nav-item"><a class="nav-link" routerLink="/login">Logout</a></li>

@@ -13,6 +13,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { AddOrganizationComponent } from './SuperAdmin/add-organization/add-organization.component';
 import { NavbarComponent } from './navbar/navbar/navbar.component';
+import { AddOrganizationAdminComponent } from './SuperAdmin/add-organization-admin/add-organization-admin.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { NavbarComponent } from './navbar/navbar/navbar.component';
     LoginComponent,
     AddOrganizationComponent,
     NavbarComponent,
+    AddOrganizationAdminComponent,
   ],
   imports: [
     BrowserModule,
