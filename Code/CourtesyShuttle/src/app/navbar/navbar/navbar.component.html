@@ -11,9 +11,9 @@
     <ul class="nav navbar-nav mr-auto mt-2 mt-lg-0" routerLinkActive="active" *ngIf="AccountAdmin">
       <li class="nav-item"><a class="nav-link" routerLink="/addorganization">{{AccountAdmin.AddOrganization}}</a></li>
       <li class="nav-item"><a class="nav-link" routerLink="/addorganizationadmincomponent">{{AccountAdmin.AddOrganizationAdmin}}</a></li>
-      <li class="nav-item"><a class="nav-link" routerLink="/adddrivercomponent">{{AccountAdmin.AddDriver}}</a></li>
-      <li class="nav-item"><a class="nav-link" routerLink="/dashboardcomponent">{{AccountAdmin.Dashboard}}</a></li>
-      <li class="nav-item"><a class="nav-link" routerLink="/addshuttlecomponent">{{AccountAdmin.AddShuttles}}</a></li>
+      <li class="nav-item"><a class="nav-link" routerLink="/adddrivercomponent/{{oid}}">{{AccountAdmin.AddDriver}}</a></li>
+      <li class="nav-item"><a class="nav-link" routerLink="/dashboardcomponent/{{oid}}">{{AccountAdmin.Dashboard}}</a></li>
+      <li class="nav-item"><a class="nav-link" routerLink="/addshuttlecomponent/{{oid}}">{{AccountAdmin.AddShuttles}}</a></li>
     </ul>
     <ul class="nav navbar-nav" routerLinkActive="active">
       <li class="nav-item"><a class="nav-link" routerLink="/login">Logout</a></li>
