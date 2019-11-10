@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {LoginService} from '../services/login.service';
-import {Router} from '@angular/router';
+import {Router, ActivatedRoute, ParamMap} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   InvalidUser = false;
   UserType = '';
 
-  constructor(private loginService: LoginService, private router: Router) { }
+  constructor(private loginService: LoginService, private router: Router,private route: ActivatedRoute) { }
 
   ngOnInit() {
   }
@@ -46,12 +46,15 @@ export class LoginComponent implements OnInit {
     else {
       console.log('Else Condition Organization Admin',user);
       localStorage.setItem('userType', user.UserType);
+
       this.loginService.authenticateAdmin(user).subscribe( (data) => {
         /*Receives success message if user exists and with correct credentails*/
         // @ts-ignore
         const mymessage = 'Success';
-        console.log("Response data",data["oid"]);
+        console.log("Response data",data);
         if (data["message"] === 'Success') {
+          localStorage.setItem('oid',data["oid"]);
+          localStorage.setItem('orgname',data["OrgName"]);
           this.router.navigateByUrl('/adddrivercomponent/'+data["oid"]);
         } else {
           console.log(data["message"]);
