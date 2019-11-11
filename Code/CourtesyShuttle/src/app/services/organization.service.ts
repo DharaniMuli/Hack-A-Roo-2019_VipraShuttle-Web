@@ -9,6 +9,7 @@ const httpOptions = {
 export class OrganizationService {
 
   uri = 'http://localhost:3000/user';
+  uriAdmin = 'http://localhost:3000/admin';
   constructor(private http: HttpClient) { }
 
   /*Sending account Inputted data bankend services and returning the response to Login ts*/
@@ -39,12 +40,12 @@ export class OrganizationService {
     console.log('in service page');
     return this.http.get(`${this.uri}/getallAdminUsers`, httpOptions);
   }
-  getAllShuttles(){
+  getAllShuttles() {
     console.log('in service page');
     return this.http.get(`${this.uri}/getAllShuttles`, httpOptions);
   }
 
-  getAllDrivers(){
+  getAllDrivers() {
     console.log('in service page');
     return this.http.post(`${this.uri}/getAllDrivers`, httpOptions);
   }
@@ -58,7 +59,15 @@ export class OrganizationService {
 
   getallorg(){
     console.log('in org page');
-    return this.http.get(`${this.uri}/getOrgNames`,httpOptions);
+    return this.http.get(`${this.uri}/getOrgNames`, httpOptions);
+  }
+
+  getShuttleDriver() {
+    return this.http.get(`${this.uriAdmin}/dashboardDetails`, httpOptions );
+  }
+
+  getShuttlebooking() {
+    return this.http.get(`${this.uriAdmin}/getshuttelbooking`);
   }
 
   orgname(data){
