@@ -13,7 +13,7 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
     const Usertype = localStorage.getItem('userType');
-    console.log("User Type",Usertype);
+    console.log("User Type check",Usertype);
     if (Usertype === 'SuperAdmin') {
       console.log(Usertype);
       this.AccountAdmin = {
@@ -23,7 +23,7 @@ export class NavbarComponent implements OnInit {
 
     }
     else if(Usertype === 'OrganizationAdmin'){
-      console.log("User Type inside navbar",Usertype);
+      console.log("User Type inside navbar OrganizationAdmin",Usertype);
       this.AccountAdmin = {
         AddDriver : 'Add Driver',
         Dashboard : 'Dashboard',
