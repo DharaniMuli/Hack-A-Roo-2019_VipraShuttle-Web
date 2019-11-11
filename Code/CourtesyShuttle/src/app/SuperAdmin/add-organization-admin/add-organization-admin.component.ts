@@ -14,7 +14,7 @@ export class AddOrganizationAdminComponent implements OnInit {
   EmailID = '';
   Password = '';
   OrganizationName = '';
-
+  private orgnames;
   private OrgDetails;
   InvalidUser = false;
   constructor(private AccountService: OrganizationService) { }
@@ -24,6 +24,11 @@ export class AddOrganizationAdminComponent implements OnInit {
       console.log('return call from db', res);
       this.OrgDetails = res;
     });
+
+    this.AccountService.getallorg().subscribe(res=>{
+      console.log('organization names',res);
+      this.orgnames=res;
+    } )
   }
   addOrganizationAdmin() {
     const accounts = {
@@ -32,9 +37,10 @@ export class AddOrganizationAdminComponent implements OnInit {
       EmailID: this.EmailID,
       Password: this.Password,
       Usertype: 'OrganizationAdmin',
-      OrganizationName: ''
+      OrganizationName: this.OrganizationName
     };
     /*Checking if users exists in DB by calling LoginServices*/
+    console.log(this.OrganizationName);
     console.log('before service call: ', accounts);
     this.AccountService.createAdminAccount(accounts).subscribe( (data) => {
       console.log("Admin Details:",accounts);

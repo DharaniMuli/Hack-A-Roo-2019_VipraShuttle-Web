@@ -19,14 +19,21 @@ export class AddDriverComponent implements OnInit {
   currLon = '';
 
   private driverDetails;
+  private orgname;
   InvalidUser = false;
   constructor(private AccountService: OrganizationService) { }
 
   ngOnInit() {
-    this.AccountService.getAllDrivers().subscribe(res => {
-      console.log('return call from db', res);
-      this.driverDetails = res;
-    });
+    //this.AccountService.getAllDrivers().subscribe(res => {
+      //console.log('return call from db', res);
+      //this.driverDetails = res;
+    //});
+
+console.log(localStorage.getItem("orgname"));
+      this.AccountService.getDrivers(localStorage.getItem("orgname")).subscribe(res=>
+      {console.log(res);
+        this.driverDetails = res;
+      });
   }
   addDriver() {
     const accounts = {
@@ -35,7 +42,7 @@ export class AddDriverComponent implements OnInit {
       EmailID: this.EmailID,
       Password: this.Password,
       Usertype: 'Driver',
-      OrganizationName: '',
+      OrganizationName: localStorage.getItem("orgname"),
       currLat: this.currLat,
       currLon: this.currLon
     };
@@ -46,10 +53,7 @@ export class AddDriverComponent implements OnInit {
       // @ts-ignore
       if (data.message === 'success') {
         console.log(data);
-        this.AccountService.getAllDrivers().subscribe(res => {
-          console.log('return call from db', res);
-          this.driverDetails = res;
-        });
+       this.ngOnInit();
       } else {
         // @ts-ignore
         console.log(data.message);
